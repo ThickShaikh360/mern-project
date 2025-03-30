@@ -13,4 +13,3 @@ app.listen(3000,(req,res)=>{
 })
 
 
-// mongodb+srv://azan16shaikh:<db_password>@mern-cluster.igc62xe.mongodb.net/?retryWrites=true&w=majority&appName=mern-cluster
