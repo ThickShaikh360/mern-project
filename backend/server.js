@@ -31,7 +31,7 @@ app.post("/api/tasks",async(req,res)=>{
 });
 
 app.listen(3000,(req,res)=>{
-    run();
+    connectDB();
     console.log('Server running on port 3000');
 });
 
