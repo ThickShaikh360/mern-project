@@ -4,8 +4,8 @@ const taskschema = new mongoose.Schema({
     name:{type: String,required:true},
    status: { 
         type: String, 
-        enum: ["ongoing", "willdo", "todo"], // Allowed values
-        default: "willdo", // Default value
+        enum: ["ongoing", "will do", "todo"], // Allowed values
+        default: "will do", // Default value
         required: true 
     },
 },{timestamps:true});

@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import { Button } from '@chakra-ui/react';
-
-
+import { Box } from '@chakra-ui/react';
+import Navbar from './Components/Navbar';
+import Homepage from './Pages/Homepage';
+import CreatePage from './Pages/CreatePage';
+import { Route,Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,13 +14,15 @@ function App() {
   }
  
   return (
-    <>
-   <Button onClick= {handleclick}>
-      Click me!
-   </Button>
-
-   <p>{count}</p>
-    </>
+  <Box minH={"100vh"}>
+   <Navbar/>
+    
+          <Routes>
+              <Route path='/' element={<Homepage/>}/>
+              <Route path='/create' element={<CreatePage/>}/>
+          </Routes>
+          <ToastContainer />
+  </Box>
   )
 }
 

@@ -4,11 +4,14 @@ import {connectDB} from './config/db.js'; //db connection method from the tutori
 // import {run} from './config/db2.js' // db connection method from the mongodb website connection howto 
 // import Task from './models/tasks.model.js';
 import router from './routes/tasks.routes.js';
+import cors from "cors"
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api/tasks",router);
+
 
 
 app.listen(3000,()=>{
