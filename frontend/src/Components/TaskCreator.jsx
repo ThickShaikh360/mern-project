@@ -16,9 +16,10 @@ try {
       });
       if (!response.ok) throw new Error("Failed to create task");
       const data = await response.json();
+      toast.success("task created successfully!");  
             setTaskName(""); // clear input
       if (onTaskCreated) onTaskCreated(data.data); // optional callback to update list
-      toast.success("task created successfully!");      
+         
     } 
 
 catch (err) {

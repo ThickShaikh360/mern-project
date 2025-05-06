@@ -48,7 +48,7 @@ const Tasks = (params) => {
             {todos.map((todo) => ( 
               <li key={todo._id}>
                 {todo.name} <br/>
-                status:-{todo.status} {" "}
+                status:-{todo.status} {"| "}
                 <button onClick={()=>handleDelete(todo._id)}>
                   Delete
                 </button>
