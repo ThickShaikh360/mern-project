@@ -2,7 +2,7 @@ import TaskCreator from "./TaskCreator";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const Tasks = (params) => {
+const Tasks = () => {
     const [todos,setTodos] = useState([])
 
     useEffect(()=>{
@@ -11,7 +11,8 @@ const Tasks = (params) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
-          return response.json();})
+          return response.json();
+        })
          .then((data)=> setTodos(data.data))
         .catch((error)=>console.log(error));
     },[])
@@ -40,21 +41,27 @@ const Tasks = (params) => {
     };
 
     return (
-        <div>
-          <h1>Todo List:- </h1>
+        <div className="container text-center justify-content-center">
+          <h1 class="h1 display-1">Todo List:- </h1>
           <br />
         <TaskCreator onTaskCreated={handleNewTask}/>
-          <ol style={{ listStyleType: 'decimal', paddingLeft: '20px' }}>
+          <div className="d-flex justify-content-center">
+          <ol class="list-group list-group-numbered w-100" style={{maxWidth:"500px"}}>
             {todos.map((todo) => ( 
-              <li key={todo._id}>
+              <li class="list-group-item fs-3" key={todo._id}>
                 {todo.name} <br/>
                 status:-{todo.status} {"| "}
-                <button onClick={()=>handleDelete(todo._id)}>
+                <button onClick={()=>handleDelete(todo._id)} class="btn btn-dark">
                   Delete
+                </button>
+                
+                <button class=" btn  btn-secondary dropdown-toggle ms-2">
+                  change status
                 </button>
               </li>
             ))}
           </ol>
+          </div>
         </div>
       );
     };
