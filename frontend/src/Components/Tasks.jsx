@@ -6,15 +6,18 @@ const Tasks = () => {
     const [todos,setTodos] = useState([])
 
     useEffect(()=>{
-        fetch("http://localhost:3000/api/tasks/")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const getData = async () => {
+          try {
+            const response = await fetch("http://localhost:3000/api/tasks/");
+            if(!response.ok) throw new Error("Network error");
+            const data = await response.json()
+            console.log("Received Data:",data);
+            setTodos(data.data)
+          } catch (error) {
+            console.error(error)
           }
-          return response.json();
-        })
-         .then((data)=> setTodos(data.data))
-        .catch((error)=>console.log(error));
+        }
+        getData();
     },[])
 
     const handleDelete = async(id) => {
